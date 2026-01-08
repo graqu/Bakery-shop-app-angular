@@ -8,6 +8,34 @@ export const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadComponent: () => import('./pages/tabs/tabs.page').then( m => m.TabsPage)
+    loadComponent: () => import('./pages/tabs/tabs.page').then(m => m.TabsPage),
+    children: [
+      {
+        path: '',
+        redirectTo: '/tabs/home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        loadComponent: () => import('./pages/tabs/home/home.page').then(m => m.HomePage)
+      },
+      {
+        path: 'explore',
+        loadComponent: () => import('./pages/tabs/explore/explore.page').then(m => m.ExplorePage)
+      },
+      {
+        path: 'wishlist',
+        loadComponent: () => import('./pages/tabs/wishlist/wishlist.page').then(m => m.WishlistPage)
+      },
+      {
+        path: 'chats',
+        loadComponent: () => import('./pages/tabs/chats/chats.page').then(m => m.ChatsPage)
+      },
+      {
+        path: 'account',
+        loadComponent: () => import('./pages/tabs/account/account.page').then(m => m.AccountPage)
+      },
+    ]
   },
+
 ];
